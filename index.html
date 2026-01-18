@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="id" class="light scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optima Studio - Arsitektur & Desain Interior</title>
+    <meta name="description"
+        content="Layanan Arsitektur dan Desain Interior Profesional. Mewujudkan visi Anda menjadi realitas yang estetis dan fungsional.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts: Manrope & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#F2542D",     /* Optima Orange */
+                        "secondary": "#56C22D",   /* Optima Green */
+                        "charcoal": "#111618",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#22262a",
+                    },
+                    fontFamily: {
+                        "display": ["Outfit", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.8' },
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .masonry-item-large,
+        .masonry-item-small,
+        .masonry-item-tall {
+            grid-column: span 12;
+        }
+
+        @media (min-width: 768px) {
+            .masonry-item-large {
+                grid-column: span 8;
+                grid-row: span 2;
+            }
+
+            .masonry-item-small {
+                grid-column: span 4;
+                grid-row: span 1;
+            }
+
+            .masonry-item-tall {
+                grid-column: span 4;
+                grid-row: span 2;
+            }
+        }
+
+        /* Smooth Fade In Animation */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-charcoal dark:text-gray-100 selection:bg-primary/30">
+
+    <!-- Navigation Bar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-charcoal/5 dark:border-white/5 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+            <!-- Logo Area -->
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Using the uploaded logo -->
+                <img src="assets/images/logo.png" alt="Optima Studio Logo" class="h-10 w-auto object-contain">
+                <!-- Fallback text if logo doesn't load or for SEO -->
+                <span class="sr-only">Optima Studio</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-10">
+                <a href="#"
+                    class="text-charcoal/70 dark:text-white/70 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest relative group">
+                    Beranda
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="about.html"
+                    class="text-charcoal/70 dark:text-white/70 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest relative group">
+                    Tentang Kami
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="services.html"
+                    class="text-charcoal/70 dark:text-white/70 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest relative group">
+                    Layanan
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="projects.html"
+                    class="text-charcoal/70 dark:text-white/70 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors uppercase tracking-widest relative group">
+                    Proyek
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- CTAs -->
+            <div class="flex items-center gap-6">
+                <button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors"
+                    aria-label="Search">
+                    <span class="material-symbols-outlined text-charcoal dark:text-white">search</span>
+                </button>
+                <a href="https://wa.me/6282123563147" target="_blank"
+                    class="hidden sm:block px-6 py-2.5 bg-gradient-to-r from-primary to-orange-600 text-white text-xs font-bold uppercase tracking-widest rounded-lg hover:shadow-xl hover:shadow-primary/20 transition-all active:scale-95 transform hover:-translate-y-0.5">
+                    Konsultasi Gratis
+                </a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-charcoal dark:text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white dark:bg-[#111618] border-t border-charcoal/5 dark:border-white/5 absolute w-full left-0 top-20 p-6 flex flex-col gap-4 shadow-xl shadow-charcoal/5">
+            <a href="#"
+                class="text-charcoal dark:text-white font-semibold py-2 hover:text-primary transition-colors border-b border-charcoal/5 dark:border-white/5">Beranda</a>
+            <a href="about.html"
+                class="text-charcoal dark:text-white font-semibold py-2 hover:text-primary transition-colors border-b border-charcoal/5 dark:border-white/5">Tentang
+                Kami</a>
+            <a href="services.html"
+                class="text-charcoal dark:text-white font-semibold py-2 hover:text-primary transition-colors border-b border-charcoal/5 dark:border-white/5">Layanan</a>
+            <a href="projects.html"
+                class="text-charcoal dark:text-white font-semibold py-2 hover:text-primary transition-colors border-b border-charcoal/5 dark:border-white/5">Proyek</a>
+            <a href="https://wa.me/6282123563147" target="_blank"
+                class="block text-center w-full py-3 bg-gradient-to-r from-primary to-orange-600 text-white font-bold rounded-lg uppercase tracking-widest text-xs shadow-lg shadow-primary/20">
+                Konsultasi Gratis
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 px-6 lg:px-10 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/60 to-transparent z-10"></div>
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop"
+                alt="Modern minimalist home interior" class="w-full h-full object-cover animate-pan-slow">
+        </div>
+
+        <div class="relative z-20 max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-10 items-center">
+            <div class="max-w-2xl fade-in-up">
+                <div
+                    class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white/90 text-[11px] font-bold uppercase tracking-[0.2em] border border-white/20">
+                    <span class="size-2 rounded-full bg-secondary animate-pulse"></span>
+                    Inovasi Desain Terdepan
+                </div>
+                <h1 class="text-white text-5xl md:text-7xl font-light leading-[1.1] mb-8 tracking-tight">
+                    Wujudkan Ruang <br />
+                    <span
+                        class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Impian</span>
+                    Anda
+                </h1>
+                <p
+                    class="text-white/80 text-lg md:text-xl font-light max-w-xl mb-10 leading-relaxed delay-100 fade-in-up">
+                    Optima Studio menghadirkan solusi arsitektur dan interior yang memadukan estetika visioner dengan
+                    fungsionalitas optimal untuk gaya hidup modern.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 delay-200 fade-in-up">
+                    <a href="projects.html"
+                        class="px-8 py-4 bg-primary text-white font-bold rounded-lg hover:bg-orange-600 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-primary/30">
+                        Lihat Portfolio
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                    <a href="#consultation"
+                        class="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/30 font-bold rounded-lg hover:bg-white/20 transition-all text-center">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+
+            <!-- Optional Floating Detail Card -->
+            <div class="hidden md:block relative z-20 justify-self-end fade-in-up delay-300">
+                <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl max-w-xs text-white">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="size-12 bg-secondary/20 rounded-full flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined">verified</span>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-widest opacity-70">Pengalaman</p>
+                            <p class="text-2xl font-bold">10+ Tahun</p>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 leading-relaxed">Memberikan layanan desain terbaik dengan dedikasi
+                        penuh pada kepuasan klien.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about"
+        class="py-24 px-6 lg:px-10 bg-background-light dark:bg-background-dark overflow-hidden relative">
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:items-center">
+            <div class="flex-1 relative">
+                <h2 class="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                    <span class="w-8 h-0.5 bg-primary"></span>
+                    Tentang Optima Studio
+                </h2>
+                <h3
+                    class="text-charcoal dark:text-white text-4xl md:text-5xl font-extrabold tracking-tight mb-8 leading-tight">
+                    Mengubah Visi Menjadi <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-600">Masterpiece.</span>
+                </h3>
+                <p class="text-charcoal/70 dark:text-white/60 text-lg leading-relaxed mb-8 font-light">
+                    Di Optima Studio, kami percaya bahwa setiap ruang memiliki cerita. Tugas kami adalah menceritakan
+                    kisah Anda melalui desain yang cerdas, material berkualitas, dan eksekusi yang presisi. Kami
+                    menggabungkan keahlian teknis dengan kepekaan artistik.
+                </p>
+                <div class="mb-8">
+                    <a href="about.html"
+                        class="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-sm hover:gap-4 transition-all">
+                        Selengkapnya tentang kami <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8 py-8 border-t border-charcoal/10 dark:border-white/10">
+                    <div>
+                        <p class="text-4xl font-black text-charcoal dark:text-white mb-1">200+</p>
+                        <p class="text-xs text-charcoal/50 dark:text-white/40 uppercase tracking-widest font-bold">
+                            Proyek Selesai</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-black text-charcoal dark:text-white mb-1">98%</p>
+                        <p class="text-xs text-charcoal/50 dark:text-white/40 uppercase tracking-widest font-bold">Klien
+                            Puas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1">
+                <div class="relative group">
+                    <div
+                        class="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 rounded-2xl transition-transform group-hover:translate-x-2 group-hover:translate-y-2">
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+                            alt="Studio Arsitek Optima"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+
+                        <div
+                            class="absolute bottom-6 left-6 right-6 p-6 bg-white/95 dark:bg-charcoal/95 backdrop-blur rounded-xl shadow-lg border-l-4 border-secondary">
+                            <p class="text-charcoal dark:text-white font-medium italic mb-2">"Desain yang baik adalah
+                                keseimbangan antara keindahan dan fungsi."</p>
+                            <p class="text-primary text-xs uppercase font-bold tracking-widest">— TEAM OPTIMA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 px-6 lg:px-10 bg-white dark:bg-charcoal/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                <div class="max-w-2xl">
+                    <h2
+                        class="text-secondary text-xs font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                        <span class="w-8 h-0.5 bg-secondary"></span>
+                        Ekspertis Kami
+                    </h2>
+                    <h3 class="text-charcoal dark:text-white text-4xl font-extrabold tracking-tight">Layanan
+                        Komprehensif</h3>
+                </div>
+                <p class="text-charcoal/60 dark:text-white/60 max-w-sm text-right hidden md:block">
+                    Solusi one-stop untuk segala kebutuhan desain dan konstruksi Anda, ditangani oleh para ahli.
+                    <br>
+                    <a href="services.html"
+                        class="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs hover:gap-3 transition-all mt-4">
+                        Lihat Semua Layanan <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="group p-8 bg-background-light dark:bg-background-dark rounded-2xl border border-charcoal/5 dark:border-white/5 hover:bg-white hover:border-primary/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 cursor-default">
+                    <div
+                        class="size-14 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform mb-8">
+                        <span class="material-symbols-outlined text-3xl">architecture</span>
+                    </div>
+                    <h4
+                        class="text-charcoal dark:text-white text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                        Arsitektur</h4>
+                    <p class="text-charcoal/60 dark:text-white/50 text-sm leading-relaxed">
+                        Perencanaan bangunan struktural yang kokoh, efisien energi, dan memiliki nilai estetika tinggi.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="group p-8 bg-background-light dark:bg-background-dark rounded-2xl border border-charcoal/5 dark:border-white/5 hover:bg-white hover:border-primary/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 cursor-default">
+                    <div
+                        class="size-14 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform mb-8">
+                        <span class="material-symbols-outlined text-3xl">chair</span>
+                    </div>
+                    <h4
+                        class="text-charcoal dark:text-white text-xl font-bold mb-3 group-hover:text-secondary transition-colors">
+                        Desain Interior</h4>
+                    <p class="text-charcoal/60 dark:text-white/50 text-sm leading-relaxed">
+                        Menciptakan suasana ruang yang personal, nyaman, dan mendukung produktivitas penghuninya.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="group p-8 bg-background-light dark:bg-background-dark rounded-2xl border border-charcoal/5 dark:border-white/5 hover:bg-white hover:border-primary/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 cursor-default">
+                    <div
+                        class="size-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mb-8">
+                        <span class="material-symbols-outlined text-3xl">apartment</span>
+                    </div>
+                    <h4
+                        class="text-charcoal dark:text-white text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                        Renovasi</h4>
+                    <p class="text-charcoal/60 dark:text-white/50 text-sm leading-relaxed">
+                        Pemugaran dan peningkatan kualitas bangunan lama menjadi ruang baru yang segar dan modern.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="group p-8 bg-background-light dark:bg-background-dark rounded-2xl border border-charcoal/5 dark:border-white/5 hover:bg-white hover:border-primary/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10 cursor-default">
+                    <div
+                        class="size-14 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform mb-8">
+                        <span class="material-symbols-outlined text-3xl">format_paint</span>
+                    </div>
+                    <h4
+                        class="text-charcoal dark:text-white text-xl font-bold mb-3 group-hover:text-purple-600 transition-colors">
+                        Konsultasi</h4>
+                    <p class="text-charcoal/60 dark:text-white/50 text-sm leading-relaxed">
+                        Diskusi mendalam mengenai pemilihan material, warna, dan tata letak furnitur yang tepat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Masonry -->
+    <section id="projects" class="py-24 px-6 lg:px-10 bg-background-light dark:bg-background-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-primary text-xs font-bold uppercase tracking-[0.3em] mb-4">Portfolio Unggulan</h2>
+                <h3 class="text-charcoal dark:text-white text-4xl md:text-5xl font-extrabold tracking-tight">Karya
+                    Terpilih Kami</h3>
+            </div>
+
+            <div class="masonry-grid auto-rows-[250px]">
+                <!-- Project 1 -->
+                <div class="masonry-item-large group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg">
+                    <div
+                        class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/50 transition-colors duration-500 z-10">
+                    </div>
+                    <img src="assets/images/tangerang-banten.jpg" alt="Modern Villa"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div
+                        class="absolute bottom-0 left-0 p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span
+                            class="px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-widest rounded mb-3 inline-block">Architecture</span>
+                        <h4 class="text-white text-3xl font-extrabold">Tangerang Banten</h4>
+                        <p
+                            class="text-white/90 mt-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100 text-sm">
+                            Konsep american classic yang modern dengan desain yang fungsional dan estetis.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="masonry-item-small group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg">
+                    <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/50 transition-colors z-10">
+                    </div>
+                    <img src="assets/images/interior.jpg" alt="Interior Design Living Room"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="absolute bottom-0 left-0 p-6 z-20">
+                        <span
+                            class="px-2 py-0.5 bg-secondary text-white text-[8px] font-bold uppercase tracking-widest rounded mb-2 inline-block">Interior</span>
+                        <h4 class="text-white text-xl font-extrabold">Design Interior</h4>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="masonry-item-small group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg">
+                    <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/50 transition-colors z-10">
+                    </div>
+                    <img src="assets/images/sentul-bogor.jpg" alt="Nordic Style House"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="absolute bottom-0 left-0 p-6 z-20">
+                        <span
+                            class="px-2 py-0.5 bg-primary text-white text-[8px] font-bold uppercase tracking-widest rounded mb-2 inline-block">Architecture</span>
+                        <h4 class="text-white text-xl font-extrabold">Sentul Bogor</h4>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Tall) -->
+                <div class="masonry-item-tall group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg">
+                    <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/50 transition-colors z-10">
+                    </div>
+                    <img src="assets/images/kitchen.jpg" alt="Luxury Kitchen"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="absolute bottom-0 left-0 p-8 z-20">
+                        <span
+                            class="px-2 py-0.5 bg-secondary text-white text-[8px] font-bold uppercase tracking-widest rounded mb-2 inline-block">Interior</span>
+                        <h4 class="text-white text-2xl font-extrabold">Kitchen Remodel</h4>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="masonry-item-large group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg">
+                    <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/50 transition-colors z-10">
+                    </div>
+                    <img src="assets/images/architecture.jpg" alt="White Modern House"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div class="absolute bottom-0 left-0 p-10 z-20">
+                        <span
+                            class="px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-widest rounded mb-3 inline-block">Planning</span>
+                        <h4 class="text-white text-3xl font-extrabold">Architecture Concept</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="projects.html"
+                    class="inline-block px-10 py-4 border-2 border-charcoal/10 dark:border-white/10 text-charcoal dark:text-white font-bold rounded-lg hover:border-primary hover:text-primary transition-all uppercase tracking-widest text-sm hover:tracking-[0.2em] duration-300">
+                    Eksplorasi Semua Proyek
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-32 px-6 lg:px-10 bg-charcoal text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 p-20 opacity-5">
+            <span class="material-symbols-outlined text-[300px]">format_quote</span>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <!-- Carousel Container -->
+            <div id="testimonial-carousel" class="relative min-h-[400px] flex items-center justify-center">
+                <!-- Slide 1 -->
+                <div class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex flex-col justify-center items-center"
+                    data-index="0">
+                    <div class="mb-10 flex justify-center gap-1 text-primary">
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                    </div>
+                    <h4 class="text-3xl md:text-4xl font-light italic leading-relaxed mb-10 font-display">
+                        "Rekomended untuk yang mau design. Harga terjangkau, revisi sampai cocok, proses cepat, dan
+                        Alhamdulilah desainny cocok dengan selera saya dan keluarga."
+                    </h4>
+                    <div>
+                        <p class="text-xl font-bold uppercase tracking-widest text-secondary">Bapak Tyo</p>
+                        <p class="text-white/60 text-sm mt-1">Jakarta</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex flex-col justify-center items-center"
+                    data-index="1">
+                    <div class="mb-10 flex justify-center gap-1 text-primary">
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                    </div>
+                    <h4 class="text-3xl md:text-4xl font-light italic leading-relaxed mb-10 font-display">
+                        "Hasil desain sangat memuaskan dan detail. Tim Optima Studio mampu menerjemahkan keinginan kami
+                        menjadi ruang yang fungsional dan indah. Sangat merekomendasikan jasa mereka."
+                    </h4>
+                    <div>
+                        <p class="text-xl font-bold uppercase tracking-widest text-secondary">Bapak Rizal</p>
+                        <p class="text-white/60 text-sm mt-1">Bondowoso</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex flex-col justify-center items-center"
+                    data-index="2">
+                    <div class="mb-10 flex justify-center gap-1 text-primary">
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                        <span class="material-symbols-outlined fill-1">star</span>
+                    </div>
+                    <h4 class="text-3xl md:text-4xl font-light italic leading-relaxed mb-10 font-display">
+                        "Profesionalisme yang luar biasa. Komunikasi lancar dari awal hingga akhir, dan solusi desain
+                        yang diberikan sangat efisien untuk budget kami tanpa mengorbankan kualitas."
+                    </h4>
+                    <div>
+                        <p class="text-xl font-bold uppercase tracking-widest text-secondary">Bapak Gusti</p>
+                        <p class="text-white/60 text-sm mt-1">Bogor</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicators -->
+            <div class="mt-12 flex justify-center gap-3 relative z-20">
+                <button class="testimonial-dot w-12 h-1 bg-primary rounded-full cursor-pointer transition-colors"
+                    onclick="goToSlide(0)"></button>
+                <button
+                    class="testimonial-dot w-12 h-1 bg-white/20 rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(1)"></button>
+                <button
+                    class="testimonial-dot w-12 h-1 bg-white/20 rounded-full cursor-pointer hover:bg-white transition-colors"
+                    onclick="goToSlide(2)"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Priority Consultation Section -->
+    <section class="py-24 px-6 lg:px-10 bg-white dark:bg-charcoal/20 relative overflow-hidden" id="consultation">
+        <!-- Background Accents -->
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 animate-pulse-slow">
+        </div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16">
+
+            <!-- Left Side: The "Why" (Sales Copy) -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <div
+                    class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-green-100/50 dark:bg-green-900/30 rounded-full text-secondary text-xs font-bold uppercase tracking-[0.2em] border border-green-200 dark:border-green-800 w-max">
+                    <span class="size-2 rounded-full bg-secondary animate-pulse"></span>
+                    Slot Terbatas Bulan Ini
+                </div>
+                <h2
+                    class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-charcoal dark:text-white leading-[1.1] mb-8 tracking-tight">
+                    Wujudkan Ruang <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-600">Impian</span>
+                    Anda Hari Ini.
+                </h2>
+                <p class="text-xl text-charcoal/70 dark:text-white/70 leading-relaxed mb-10 max-w-2xl">
+                    Jangan biarkan ide brilinan Anda hanya sekadar angan. Dapatkan desain arsitektur & interior kelas
+                    dunia yang fungsional, estetis, dan sesuai budget Anda.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-6 mb-12">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                            <span class="material-symbols-outlined text-2xl">rocket_launch</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1 dark:text-white">Proses Cepat</h4>
+                            <p class="text-sm text-charcoal/60 dark:text-white/60">Dari konsep hingga gambar kerja tanpa
+                                drama penundaan.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                            <span class="material-symbols-outlined text-2xl">verified_user</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1 dark:text-white">Garansi Kepuasan</h4>
+                            <p class="text-sm text-charcoal/60 dark:text-white/60">Revisi desain sampai Anda benar-benar
+                                jatuh cinta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center gap-6 p-6 bg-charcoal dark:bg-white text-white dark:text-charcoal rounded-2xl shadow-xl max-w-lg transform hover:-translate-y-1 transition-all duration-300">
+                    <img src="assets/images/logo.png"
+                        class="h-12 w-auto object-contain brightness-0 invert dark:brightness-0" alt="Logo">
+                    <div>
+                        <p class="font-bold text-lg">Konsultasi Via WhatsApp?</p>
+                        <p class="text-sm opacity-70">Respon lebih cepat, ngobrol santai.</p>
+                    </div>
+                    <a href="https://wa.me/6282123563147" target="_blank"
+                        class="ml-auto size-12 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30">
+                        <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.0117 2.00281C6.50574 2.00281 2.02295 6.4856 2.02295 11.9916C2.02246 13.7483 2.48187 15.4673 3.35242 16.9961L2.00391 22.0003L7.10895 20.6419C8.58618 21.4646 10.2797 21.8988 12.0073 21.8993H12.0117C17.5173 21.8993 22 17.4165 22 11.9105C22.0002 9.28259 20.9567 6.76453 19.0984 4.906`C17.2401 3.04749 14.7214 2.0033 12.0117 2.00281V2.00281ZM12.0117 20.2198C10.4561 20.2198 8.92725 19.8033 7.57941 19.0061L7.2605 18.8164L4.05389 19.6699L4.9101 16.5134L4.70038 16.18C3.84753 14.8322 3.39862 13.2753 3.39954 11.6852C3.39954 6.94275 7.2619 3.08038 12.0163 3.08038C14.3168 3.08087 16.4795 3.97729 18.1064 5.60339C19.7334 7.23035 20.6288 9.39258 20.6283 11.6931C20.6283 16.4355 16.766 20.2863 12.0117 20.2198V20.2198Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: The Order Form -->
+            <div class="lg:col-span-5 relative">
+                <div
+                    class="bg-white dark:bg-[#1a1f21] p-8 md:p-10 rounded-3xl shadow-2xl border border-charcoal/5 dark:border-white/5 relative z-10">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-charcoal dark:text-white">Formulir Konsultasi Prioritas</h2>
+                        <p class="text-sm text-charcoal/60 dark:text-white/60 mt-2">Isi data di bawah untuk mendapatkan
+                            jadwal diskusi gratis.</p>
+                    </div>
+
+                    <form action="https://wa.me/6282123563147" method="get" target="_blank" class="space-y-5"
+                        id="consultation-form">
+                        <!-- Name -->
+                        <div>
+                            <label for="form-name"
+                                class="block text-xs font-bold uppercase tracking-widest text-charcoal/50 dark:text-white/50 mb-2">Nama
+                                Lengkap</label>
+                            <input type="text" id="form-name" name="text" placeholder="Masukkan nama Anda" required
+                                class="w-full bg-background-light dark:bg-background-dark border-0 rounded-lg px-4 py-3 text-charcoal dark:text-white placeholder:text-charcoal/30 dark:placeholder:text-white/30 focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-charcoal transition-all">
+                        </div>
+
+                        <!-- Service Type -->
+                        <div>
+                            <label for="form-service"
+                                class="block text-xs font-bold uppercase tracking-widest text-charcoal/50 dark:text-white/50 mb-2">Jenis
+                                Layanan</label>
+                            <select id="form-service"
+                                class="w-full bg-background-light dark:bg-background-dark border-0 rounded-lg px-4 py-3 text-charcoal dark:text-white focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-charcoal transition-all cursor-pointer">
+                                <option value="Arsitektur">Jasa Arsitektur</option>
+                                <option value="Interior">Desain Interior</option>
+                                <option value="Renovasi">Renovasi Bangunan</option>
+                                <option value="Lainnya">Konsultasi Umum</option>
+                            </select>
+                        </div>
+
+                        <!-- Budget -->
+                        <div>
+                            <label for="form-budget"
+                                class="block text-xs font-bold uppercase tracking-widest text-charcoal/50 dark:text-white/50 mb-2">Estimasi
+                                Budget</label>
+                            <select id="form-budget"
+                                class="w-full bg-background-light dark:bg-background-dark border-0 rounded-lg px-4 py-3 text-charcoal dark:text-white focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-charcoal transition-all cursor-pointer">
+                                <option value="Tentative">Masih Tentative</option>
+                                <option value="<100Jt">Di bawah 100 Juta</option>
+                                <option value="100-500Jt">100 - 500 Juta</option>
+                                <option value="500Jt-1M">500 Juta - 1 Milyar</option>
+                                <option value=">1M">Di atas 1 Milyar</option>
+                            </select>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="form-message"
+                                class="block text-xs font-bold uppercase tracking-widest text-charcoal/50 dark:text-white/50 mb-2">Detail
+                                Kebutuhan</label>
+                            <textarea id="form-message" rows="3" placeholder="Ceritakan sedikit tentang proyek Anda..."
+                                class="w-full bg-background-light dark:bg-background-dark border-0 rounded-lg px-4 py-3 text-charcoal dark:text-white placeholder:text-charcoal/30 dark:placeholder:text-white/30 focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-charcoal transition-all resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full py-4 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-orange-600 hover:shadow-xl hover:shadow-primary/40 active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group">
+                            <span>Kirim & Hubungi Sekarang</span>
+                            <span
+                                class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+                        </button>
+
+                        <p class="text-[10px] text-center text-charcoal/40 dark:text-white/40">
+                            <span class="material-symbols-outlined text-[12px] align-middle">lock</span> Data Anda aman
+                            dan terenkripsi.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Decorative Blob behind form -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-400 rounded-full blur-3xl opacity-20 -z-0">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#0a0d0e] text-white pt-24 pb-12 px-6 lg:px-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
+            <div class="lg:col-span-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <img src="assets/images/logo.png" alt="Optima Studio Logo"
+                        class="h-10 w-auto object-contain brightness-0 invert">
+                </div>
+                <p class="text-white/50 text-sm leading-relaxed mb-8">
+                    Partner terpercaya Anda dalam menciptakan ruang yang inspiratif, fungsional, dan berkelanjutan.
+                </p>
+                <div class="flex gap-4">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/jdr.optima.studio?locale=id_ID" target="_blank"
+                        rel="noopener noreferrer"
+                        class="size-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:-translate-y-1 text-white/70 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/optima.studio/" target="_blank" rel="noopener noreferrer"
+                        class="size-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:-translate-y-1 text-white/70 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.409-.06 3.809-.06h.63zm1.672 5.374a5.369 5.369 0 11-5.369 5.369 5.369 5.369 0 015.369-5.369zm0 9a3.631 3.631 0 10-3.631-3.631 3.631 3.631 0 003.631 3.631z"
+                                clip-rule="evenodd" />
+                            <path d="M19 6.5a1.25 1.25 0 11-1.25-1.25A1.25 1.25 0 0119 6.5z" />
+                        </svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@optimastudio" target="_blank" rel="noopener noreferrer"
+                        class="size-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all hover:-translate-y-1 text-white/70 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418zM15.194 12 10 15V9l5.194 3z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div>
+                <h5 class="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-8">Navigasi</h5>
+                <ul class="space-y-4">
+                    <li><a href="#"
+                            class="text-white/70 hover:text-primary transition-colors text-sm flex items-center gap-2 max-w-max"><span
+                                class="w-0 overflow-hidden group-hover:w-2 transition-all duration-300">-</span>Beranda</a>
+                    </li>
+                    <li><a href="projects.html"
+                            class="text-white/70 hover:text-primary transition-colors text-sm flex items-center gap-2 max-w-max"><span
+                                class="w-0 overflow-hidden group-hover:w-2 transition-all duration-300">-</span>Portfolio
+                            Kami</a></li>
+                    <li><a href="services.html"
+                            class="text-white/70 hover:text-primary transition-colors text-sm flex items-center gap-2 max-w-max"><span
+                                class="w-0 overflow-hidden group-hover:w-2 transition-all duration-300">-</span>Layanan
+                            Desain</a></li>
+                    <li><a href="about.html"
+                            class="text-white/70 hover:text-primary transition-colors text-sm flex items-center gap-2 max-w-max"><span
+                                class="w-0 overflow-hidden group-hover:w-2 transition-all duration-300">-</span>Tentang
+                            Studio</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div id="contact">
+                <h5 class="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-8">Kontak</h5>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span>
+                        <span class="flex-1">Jl. Alhidayah II, Jatibening - Pondok Gede , Bekasi, Indonesia, West
+                            Java</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-primary text-lg">mail</span>
+                        <a href="mailto:optimastudio.gmt@gmail.com"
+                            class="hover:text-white transition-colors">optimastudio.gmt@gmail.com</a>
+                    </li>
+                    <li class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                        <a href="tel:+6282123563147" class="hover:text-white transition-colors">0821-2356-3147</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-white/30 text-[10px] font-bold uppercase tracking-widest">© 2026 OPTIMA STUDIO. ALL RIGHTS
+                RESERVED.</p>
+            <div class="flex gap-8">
+                <a href="#"
+                    class="text-white/30 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Privacy
+                    Policy</a>
+                <a href="#"
+                    class="text-white/30 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Terms
+                    of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md', 'bg-white/95', 'dark:bg-[#111618]/95');
+                header.classList.remove('bg-background-light/90', 'dark:bg-background-dark/90');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95', 'dark:bg-[#111618]/95');
+                header.classList.add('bg-background-light/90', 'dark:bg-background-dark/90');
+            }
+        });
+
+        // Mobile Menu Toggle Script
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Optional: Animating the icon
+                const icon = mobileBtn.querySelector('span');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.textContent = 'menu';
+                } else {
+                    icon.textContent = 'close';
+                }
+            });
+
+            // Close menu when clicking a link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileBtn.querySelector('span').textContent = 'menu';
+                });
+            });
+        }
+
+        // Testimonial Carousel Script
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                    slide.style.zIndex = '10';
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                    slide.style.zIndex = '0';
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white/20');
+                    dot.classList.add('bg-primary');
+                } else {
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-white/20');
+                }
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000); // 5 seconds
+        }
+
+        // Initialize
+        if (slides.length > 0) {
+            showSlide(0);
+            resetInterval();
+        }
+
+        // Form Submission Handler (Homepage)
+        const consultationForm = document.getElementById('consultation-form');
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('form-name').value;
+                const service = document.getElementById('form-service').value;
+                const budget = document.getElementById('form-budget').value;
+                const message = document.getElementById('form-message').value;
+
+                const waNumber = "6282123563147";
+                const text = `Halo Optima Studio, saya ingin konsultasi dari Website (Homepage).%0A%0A*Nama:* ${name}%0A*Layanan:* ${service}%0A*Budget:* ${budget}%0A*Pesan:* ${message}`;
+
+                window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+            });
+        }
+    </script>
+
+</body>
+
+</html>
